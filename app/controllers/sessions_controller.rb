@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
 
 	private
 
+
 	def set_consumer
 		@consumer = OAuth::Consumer.new(
 			CONSUMER_KEY,
@@ -35,8 +36,7 @@ class SessionsController < ApplicationController
 			site: 'https://api.zaim.net',
 			request_token_path: '/v2/auth/request',
 			authorize_url: 'https://auth.zaim.net/users/auth',
-			access_token_path: '/v2/auth/access'
-			)
+			access_token_path: '/v2/auth/access')
 	end
 
 end

@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
 
 	CONSUMER_KEY = ENV['CONSUMER_KEY']
 	CONSUMER_SECRET = ENV['CONSUMER_SECRET']
-	CALLBACK_URL = 'https://api.zaim.net/v2/'
+	CALLBACK_URL = 'http://localhost:3000/callback'
 	API_URL = 'https://api.zaim.net/v2/'
 end
