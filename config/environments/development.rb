@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -11,6 +12,17 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
+
+	config.generators do |g|
+		g.test_framework false
+		g.helper false
+		g.javascripts false
+		g.test_frame_work :rspec,
+			view_specs: false,
+			helper_specs: false,
+			routing_specs: false,
+			request_specs: false
+	end
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
