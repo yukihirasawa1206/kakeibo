@@ -8,8 +8,8 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+/kakeibo_development
+/kakeibo_test
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -17,7 +17,10 @@
 !/log/.keep
 !/tmp/.keep
 /.env
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 /node_modules
 /yarn-error.log
 
