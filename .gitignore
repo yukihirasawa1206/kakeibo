@@ -17,6 +17,13 @@
 !/log/.keep
 !/tmp/.keep
 /.env
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
+=======
+>>>>>>> master
 /node_modules
 /yarn-error.log
 
