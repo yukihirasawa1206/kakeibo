@@ -17,11 +17,12 @@ Rails.application.configure do
 		g.test_framework false
 		g.helper false
 		g.javascripts false
+		g.stylesheets false
 		g.test_frame_work :rspec,
 			view_specs: false,
 			helper_specs: false,
-			routing_specs: false,
-			request_specs: false
+			routing_specs: false
+
 	end
 
   # Enable/disable caching. By default caching is disabled.
