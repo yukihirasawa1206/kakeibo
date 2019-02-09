@@ -1,4 +1,5 @@
 class AccountBooksController < ApplicationController
+	before_action :authenticated_user?
 	before_action :set_consumer, only: [:index, :create, :destroy]
 	before_action :set_access_token, only: [:index, :create, :destroy]
 
@@ -26,6 +27,11 @@ class AccountBooksController < ApplicationController
 	end
 
 	private
+
+	def authenticated_user?
+		return if session[:request_token] && session[:request_secret]
+		redirect_to root_path
+	end
 
 	def set_consumer
 		@consumer = OAuth::Consumer.new(
