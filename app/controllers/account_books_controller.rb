@@ -3,13 +3,11 @@ class AccountBooksController < ApplicationController
 	before_action :set_access_token, only: [:index, :create, :destroy]
 
 	def index
-		category_list
 		payment_records_json = @access_token.get("#{API_URL}home/money")
 		@payment_records = JSON.parse(payment_records_json.body)["money"]
 	end
 
 	def create
-		category_list
 		account_data = {"mapping" => 1,
 									 "category_id" => params["category_id"],
 									 "genre_id" => params["genre_id"],
