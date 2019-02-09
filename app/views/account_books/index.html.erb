@@ -1,1 +1,16 @@
-@payment
+<div class="row">
+	<div class= "col-sm-3">
+		<%= render 'account_form'%>
+	</div>
+	<div class="col-sm-9">
+		<% @payment_records.each do |payment_record| %>
+			<div class="payment">
+				<%= payment_record["date"] %>
+				<%= payment_record["amount"] %>
+				<%= payment_record["name"] %>
+				<%= payment_record["place"] %>
+				<%= link_to 'X', account_book_path(payment_record["id"]), method: :delete %>
+			</div>
+		<% end %>
+	</div>
+</div>

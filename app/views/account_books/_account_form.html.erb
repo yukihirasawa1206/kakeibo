@@ -1,0 +1,9 @@
+<%= form_tag controller: :account_books, action: :create do %>
+	<%= select_tag :category_id, options_for_select(@categories_convert_hash.values) %>
+	<%= text_field_tag :genre_id, '', size:30 %>
+	<%= text_field_tag :name, '', size: 30 %>
+	<%= text_field_tag :amount, '', size: 30 %>
+	<%= text_field_tag :comment, '', size: 30 %>
+	<%= submit_tag "Create record"%>
+<% end %>
+
