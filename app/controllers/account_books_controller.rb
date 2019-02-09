@@ -11,11 +11,11 @@ class AccountBooksController < ApplicationController
 	def create
 		category_list
 		account_data = {"mapping" => 1,
-									 "category_id" => @categories_convert_hash.key(params["category_id"]),
+									 "category_id" => params["category_id"],
 									 "genre_id" => params["genre_id"],
 									 "name" => params["name"],
 									 "amount" => params["amount"],
-									 "comment" => params["coment"],
+									 "comment" => params["comment"],
 									 "date" => Date.today.to_s
 		}
 		@access_token.post("#{API_URL}home/money/payment", account_data)
