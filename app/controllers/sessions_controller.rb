@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
 			access_token = @request_token.get_access_token(oauth_verifier: @oauth_verifier)
 			session[:access_token] = access_token.token
 			session[:access_secret] = access_token.secret
+			redirect_to account_books_path
 		else
 			logout
 		end
