@@ -1,21 +1,22 @@
-<div class></div>
-
-<%= form_tag controller: :account_books, action: :create do %>
-	<div class='form-group'>
-		<%= text_field_tag :name, '',placeholder: 'Name', class: 'form-control'  %>
-	</div>
-	<%= render 'select_box' %>
-	<div class='form-group'>
-		<%= text_field_tag :amount, '', placeholder: 'Amount', class: 'form-control'  %>
-	</div>
-	<div class='form-group'>
-		<%= text_field_tag :date, Date.today, class: 'form-control datepicker' %>
-	</div>
-	<div class='form-group'>
-		<%= text_area_tag :comment, '', placeholder: 'Comment', class: 'form-control'  %>
-	</div>
-	<div class='form-actions'>
-	<%= submit_tag "Create account record", class: 'btn btn-primary'%>
-	</div>
-<% end %>
+<div class="account-form card d-flex justify-content-center">
+	<div class="card-header text-center"><strong>Create Account Record</strong></div>
+	<%= form_tag controller: :account_books, action: :create do %>
+		<div class='form-group'>
+			<%= text_field_tag :name, '',placeholder: 'Name', class: 'form-control'  %>
+		</div>
+		<%= render 'select_box' %>
+		<div class='form-group'>
+			<%= text_field_tag :amount, '', placeholder: 'Amount', class: 'form-control'  %>
+		</div>
+		<div class='form-group'>
+			<%= text_field_tag :date, Date.today, class: 'form-control datepicker' %>
+		</div>
+		<div class='form-group'>
+			<%= text_area_tag :comment, '', placeholder: 'Comment', class: 'form-control'  %>
+		</div>
+		<div class='form-actions text-center'>
+			<%= submit_tag "Create account record", class: 'btn btn-success'%>
+		</div>
+	<% end %>
+</div>
 
