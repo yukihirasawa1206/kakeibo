@@ -6,6 +6,9 @@ class AccountBooksController < ApplicationController
 	def index
 		payment_records_json = @access_token.get("#{API_URL}home/money")
 		@payment_records = JSON.parse(payment_records_json.body)["money"]
+		user_json = @access_token.get("#{API_URL}home/user/verify")
+		@user = JSON.parse(user_json.body)["me"]
+		binding.pry
 	end
 
 	def create

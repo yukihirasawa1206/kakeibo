@@ -1,14 +1,14 @@
 class SessionsController < ApplicationController
-	before_action :set_consumer, only: [:login, :callback]
+	before_action :set_consumer, only: [:signin, :callback]
 
-	def login
+	def signin
 		@request_token = @consumer.get_request_token(oauth_callback: CALLBACK_URL)
 		session[:request_token] = @request_token.token
 		session[:request_secret] = @request_token.secret
 		redirect_to @request_token.authorize_url(oauth_callback: CALLBACK_URL)
 	end
 
-	def logout
+	def signout
 		session[:request_token] = nil
 		session[:request_secret] = nil
 		redirect_to root_path
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 			session[:access_secret] = access_token.secret
 			redirect_to account_books_path
 		else
-			logout
+			signout
 		end
 	end
 

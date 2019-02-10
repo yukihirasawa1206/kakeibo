@@ -14,3 +14,42 @@
  *= require_self
  */
 @import "bootstrap";
+body {
+	background-color: #fafafa;
+	font-size: 14px;
+	color: #262626;
+}
+header {
+	background-color: #ffffff;
+	.navbar-brand {
+		font-size: 21px;
+		font-weight: bold;
+		color: gray;
+		.fas {
+			color: #28a745;
+		}
+	}
+}
+
+.landing-left {
+	margin-top: 20px;
+	.account-form{
+	background-color: #ffffff;
+	.form-group {
+		margin: 15px;
+	}
+	.form-actions {
+		margin: 15px;
+}
+}
+}
+
+.landing-right {
+	margin-top: 20px;
+	.ul{
+	background-color: #ffffff;
+	}
+	.account-record-list {
+		margin-top: 15px;
+	}
+}
