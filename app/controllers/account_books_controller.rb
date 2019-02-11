@@ -8,17 +8,19 @@ class AccountBooksController < ApplicationController
 		@payment_records = JSON.parse(payment_records_json.body)["money"]
 		user_json = @access_token.get("#{API_URL}home/user/verify")
 		@user = JSON.parse(user_json.body)["me"]
+		category_list
 		binding.pry
 	end
 
 	def create
-		account_data = {"mapping" => 1,
-									 "category_id" => params["category_id"],
-									 "genre_id" => params["genre_id"],
-									 "name" => params["name"],
-									 "amount" => params["amount"],
-									 "comment" => params["comment"],
-									 "date" => Date.today.to_s
+		account_data = {
+			"mapping" => 1,
+			"category_id" => params["category_id"],
+			"genre_id" => params["genre_id"],
+			"name" => params["name"],
+			"amount" => params["amount"],
+			"date" => params["date"],
+			"comment" => params["comment"]
 		}
 		@access_token.post("#{API_URL}home/money/payment", account_data)
 		redirect_to account_books_path

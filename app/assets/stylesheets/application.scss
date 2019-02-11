@@ -46,10 +46,20 @@ header {
 
 .landing-right {
 	margin-top: 20px;
+	margin-bottom: 15px;
 	.ul{
 	background-color: #ffffff;
 	}
+	.month-button {
+		margin-top: 10px;
+	}
 	.account-record-list {
-		margin-top: 15px;
+		margin-top: 10px;
+		.payment-record-name {
+		font-size: 11px;
+		}
+		.payment-record-place {
+		font-size: 11px;
+		}
 	}
 }
