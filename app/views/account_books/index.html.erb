@@ -19,23 +19,44 @@
 			</ul>
 		</div>
 		<div>
+			<div class="month-button d-flex justify-content-center">
+				<button class="minus-button btn btn-default mr-1"><</button>
+				<button class="btn btn-default mr-1"><%= Date.new.month %></button>
+				<button class="plus-button btn btn-default">></button>
+			</div>
 			<ul class="account-record-list list-group">
-				<% @payment_records.each do |payment_record| %>
-					<li class="list-group-item">
-						<div class="row">
-						<div class="col-sm-4"><%= payment_record["name"] %></div>
-						<div class="col-sm-1">&yen;<%= payment_record["amount"] %></div>
-						<div class="col-sm-4"><%= payment_record["place"] %></div>
-						<div class="col-sm-2"><%= payment_record["date"] %></div>
-						<div class="col-sm-1">
+				<% @payment_records.each_with_index do |payment_record, index| %>
+					<li class="list-group-item payment-record-list" id="payment-record-<%= index + 1%>">
+					<div class="row">
+						<div class="payment-record-date col-sm-2">
+							<%= payment_record["date"] %>
+						</div>
+						<div class="payment-record-category col-sm-1">
+							<%= @categories_convert_hash[payment_record["category_id"].to_i] %>
+						</div>
+						<div class="payment-record-name col-sm-3">
+							<%= payment_record["name"] %>
+						</div>
+						<div class="payment-record-amount col-sm-1">
+							&yen;<%= payment_record["amount"] %>
+						</div>
+						<div class="payment-record-place col-sm-4">
+							<%= payment_record["place"] %>
+						</div>
+						<div class="payment-record-destroy col-sm-1">
 							<%= link_to account_book_path(payment_record["id"]), method: :delete do %>
 								<i class="fas fa-trash-alt text-secondary"></i>
 							<% end %>
 						</div>
-						</div>
-					</li>
+					</div>
+				</li>
 				<% end %>
 			</ul>
 		</div>
+			<div class="month-button d-flex justify-content-center">
+				<button class="btn btn-default mr-1 minus-button"><</button>
+				<button class="btn btn-default mr-1"><%= Date.new.month %></button>
+				<button class="btn btn-default plus-button">></button>
+			</div>
 	</div>
 </div>
