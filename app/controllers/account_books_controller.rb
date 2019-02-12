@@ -1,5 +1,5 @@
 class AccountBooksController < ApplicationController
-	before_action :authenticated_user?
+	before_action :authenticated_user
 	before_action :set_consumer, only: [:index, :create, :destroy]
 	before_action :set_access_token, only: [:index, :create, :destroy]
 
@@ -9,7 +9,6 @@ class AccountBooksController < ApplicationController
 		user_json = @access_token.get("#{API_URL}home/user/verify")
 		@user = JSON.parse(user_json.body)["me"]
 		category_list
-		binding.pry
 	end
 
 	def create
@@ -33,7 +32,7 @@ class AccountBooksController < ApplicationController
 
 	private
 
-	def authenticated_user?
+	def authenticated_user
 		return if session[:request_token] && session[:request_secret]
 		redirect_to root_path
 	end
