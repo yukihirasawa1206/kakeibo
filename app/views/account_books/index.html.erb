@@ -6,24 +6,36 @@
 		<div class="user-table">
 			<ul class="list-group">
 				<li class="list-group-item">
-					<div class="user-info">
-						<%= image_tag @user["profile_image_url"] %>
-						<p><%= @user["name"] %></p>
+					<div class="user-content row">
+						<div class="user-info col-sm-2 text-center">
+								<%= image_tag @user["profile_image_url"] %>
+								<b><%= @user["name"] %></b>
+						</div>
+						<div class="user-record col-sm-10 row">
+							<div class="record-content col-sm-4 text-center">
+								<p class="record-number"><%= @user["input_count"] %></p>
+								<b class="record-title">Input count </b>
+							</div>
+							<div class="record-content col-sm-4 text-center">
+								<p class="record-number"><%= @user["day_count"] %></p>
+								<b class="record-title">Day count </b>
+							</div>
+							<div class="record-content col-sm-4 text-center">
+								<p class="record-number"><%= @user["repeat_count"] %></p>
+								<b class="record-title">Repeat count </b>
+							</div>
+						</div>
 					</div>
-					<div class="user-record">
-						<p>Input count <%= @user["input_count"] %></p>
-						<p>Day count <%= @user["day_count"] %></p>
-						<p>Repeat count <%= @user["repeat_count"] %></p>
-					</div>
+					<hr>
+					<div class="sum-payment col-sm-12 text-center">
+						<b>Payment of this month</b>
+						<p><%= sum_month_payment(@payment_records) %></p>
+				</div>
 				</li>
 			</ul>
 		</div>
 		<div>
-			<div class="month-button d-flex justify-content-center">
-				<button class="minus-button btn btn-default mr-1"><</button>
-				<button class="btn btn-default mr-1"><%= Date.new.month %></button>
-				<button class="plus-button btn btn-default">></button>
-			</div>
+			<%= render 'month_changer' %>
 			<ul class="account-record-list list-group">
 				<% @payment_records.each_with_index do |payment_record, index| %>
 					<li class="list-group-item payment-record-list" id="payment-record-<%= index + 1%>">
@@ -53,10 +65,6 @@
 				<% end %>
 			</ul>
 		</div>
-			<div class="month-button d-flex justify-content-center">
-				<button class="btn btn-default mr-1 minus-button"><</button>
-				<button class="btn btn-default mr-1"><%= Date.new.month %></button>
-				<button class="btn btn-default plus-button">></button>
-			</div>
+		<%= render 'month_changer' %>
 	</div>
 </div>

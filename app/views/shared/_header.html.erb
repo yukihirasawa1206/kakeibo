@@ -8,9 +8,11 @@
 				<%= link_to account_books_path, class: 'navbar-brand mx-auto' do %>
 				<span class="text-secondary"><i class="fas fa-server"></i> Kakeibo App</span>
 				<% end %>
-				<form class="form-inline my-2 my-lg-0">
-					<%= link_to "Sign out", signout_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0" %>
-				</form>
+				<% if signin_user? %>
+					<form class="form-inline my-2 my-lg-0">
+						<%= link_to "Sign out", signout_path, method: :delete, class: "btn btn-outline-dark my-2 my-sm-0" %>
+					</form>
+				<% end %>
 			</div>
 		</nav>
 	</div>
