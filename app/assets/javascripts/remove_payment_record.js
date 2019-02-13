@@ -11,15 +11,15 @@ jQuery(function(){
   });
 
   $('.minus-button').click(function(){
-      $('.account-record-list').find('.payment-record-list').show();
-      if(select_month > 0){
-        select_month = select_month - 1;
-      }
-      else{
-        select_month = 11;
-        select_year = select_year - 1;
-      }
-      console.log(select_month, select_year)
+    $('.account-record-list').find('.payment-record-list').show();
+    if(select_month > 0){
+      select_month = select_month - 1;
+    }
+    else{
+      select_month = 11;
+      select_year = select_year - 1;
+    }
+    $('.month-indicater').text(`${select_year}-${select_month + 1}`);
     $('.payment-record-list').each(function(index, element){
       str = $(element).find('.payment-record-date').text();
       month = new Date(str).getMonth();
@@ -39,7 +39,7 @@ jQuery(function(){
       else{
         select_month = select_month + 1;
       }
-      console.log(select_month, select_year)
+    $('.month-indicater').text(`${select_year}-${select_month + 1}`);
     $('.payment-record-list').each(function(index, element){
       str = $(element).find('.payment-record-date').text();
       month = new Date(str).getMonth();
