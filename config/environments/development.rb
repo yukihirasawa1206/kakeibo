@@ -13,18 +13,6 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
-	config.generators do |g|
-		g.test_framework false
-		g.helper false
-		g.javascripts false
-		g.stylesheets false
-		g.test_frame_work :rspec,
-			view_specs: false,
-			helper_specs: false,
-			routing_specs: false
-
-	end
-
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
