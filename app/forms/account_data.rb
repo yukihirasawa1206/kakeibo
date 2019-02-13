@@ -1,4 +1,4 @@
-class Account_data
+class AccountData
 	include ActiveModel::Model
 
 	attr_accessor :category_id, :genre_id,:amount,:date, :comment, :name, :place

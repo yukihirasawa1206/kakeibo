@@ -8,12 +8,12 @@ class AccountBooksController < ApplicationController
 		@payment_records = JSON.parse(payment_records_json.body)["money"]
 		user_json = @access_token.get("#{API_URL}home/user/verify")
 		@user = JSON.parse(user_json.body)["me"]
-		@account_data = Account_data.new
+		@account_data = AccountData.new
 		category_list
 	end
 
 	def create
-		@account_data = Account_data.new(account_data_params)
+		@account_data = AccountData.new(account_data_params)
 		if @account_data.valid?
 			account_data = {
 				"mapping"     => 1,
