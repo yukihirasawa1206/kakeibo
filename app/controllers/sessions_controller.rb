@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
 		session[:request_token] = nil
 		session[:request_secret] = nil
 		redirect_to root_path
+		flash[:notice] = "Sign out is successfull."
 	end
 
 	def callback
@@ -22,8 +23,10 @@ class SessionsController < ApplicationController
 			session[:access_token] = access_token.token
 			session[:access_secret] = access_token.secret
 			redirect_to account_books_path
+			flash[:notice] = "Sign in is successfull."
 		else
 			signout
+			flash[:alert] = "Something went wrong ..."
 		end
 	end
 

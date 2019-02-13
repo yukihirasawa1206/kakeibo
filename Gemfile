@@ -17,6 +17,7 @@ gem 'bootstrap', '>= 4.1.2'
 gem 'jquery-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'httpclient'
+gem 'toastr-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
