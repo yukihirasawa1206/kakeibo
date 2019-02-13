@@ -40,22 +40,22 @@
 				<% @payment_records.each_with_index do |payment_record, index| %>
 					<li class="list-group-item payment-record-list" id="payment-record-<%= index + 1%>">
 					<div class="row">
-						<div class="payment-record-date col-sm-2">
+						<div class="payment-record-date col-sm-2 text-center px-0">
 							<%= payment_record["date"] %>
 						</div>
-						<div class="payment-record-category col-sm-1">
+						<div class="payment-record-category col-sm-2 text-center pl-0">
 							<%= @categories_convert_hash[payment_record["category_id"].to_i] %>
 						</div>
-						<div class="payment-record-name col-sm-3">
+						<div class="payment-record-name col-sm-3 text-center">
 							<%= payment_record["name"] %>
 						</div>
-						<div class="payment-record-amount col-sm-1">
+						<div class="payment-record-amount col-sm-1 text-right">
 							&yen;<%= payment_record["amount"] %>
 						</div>
-						<div class="payment-record-place col-sm-4">
+						<div class="payment-record-place col-sm-3 text-right pr-0">
 							<%= payment_record["place"] %>
 						</div>
-						<div class="payment-record-destroy col-sm-1">
+						<div class="payment-record-destroy col-sm-1 text-right">
 							<%= link_to account_book_path(payment_record["id"]), method: :delete do %>
 								<i class="fas fa-trash-alt text-secondary"></i>
 							<% end %>
