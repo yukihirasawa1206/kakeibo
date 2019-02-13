@@ -57,6 +57,27 @@ RSpec.describe AccountData, :type => :model do
       expect(@account_data.errors[:name]).to include("is too long (maximum is 100 characters)")
     end
 
+    it "should be valid data if a comment is less than or equal to 100 characters" do
+      @account_data.comment = "a" * 100
+      expect(@account_data).to be_valid
+    end
+
+    it "should be invalid data if a comment is more than 100 characters" do
+      @account_data.comment = "a" * 101
+      @account_data.valid?
+      expect(@account_data.errors[:comment]).to include("is too long (maximum is 100 characters)")
+    end
+
+    it "should be valid data if a place is less than or equal to 100 characters" do
+      @account_data.place = "a" * 100
+      expect(@account_data).to be_valid
+    end
+
+    it "should be invalid data if a place is more than 100 characters" do
+      @account_data.place = "a" * 101
+      @account_data.valid?
+      expect(@account_data.errors[:place]).to include("is too long (maximum is 100 characters)")
+    end
   end
 
 end
