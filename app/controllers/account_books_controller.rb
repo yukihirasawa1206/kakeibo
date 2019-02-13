@@ -9,19 +9,24 @@ class AccountBooksController < ApplicationController
 		user_json = @access_token.get("#{API_URL}home/user/verify")
 		@user = JSON.parse(user_json.body)["me"]
 		category_list
+		@account_data = Account_data.new
 	end
 
 	def create
-		account_data = {
-			"mapping" => 1,
-			"category_id" => params["category_id"],
-			"genre_id" => params["genre_id"],
-			"name" => params["name"],
-			"amount" => params["amount"],
-			"date" => params["date"],
-			"comment" => params["comment"]
-		}
-		@access_token.post("#{API_URL}home/money/payment", account_data)
+		@account_data = Account_data.new(account_data_params)
+		if @account_data.valid?
+			account_data = {
+				"mapping" => 1,
+				"category_id" => @account_data.category_id,
+				"genre_id" => @account_data.genre_id,
+				"name" => @account_data.name,
+				"amount" => @account_data.amount,
+				"date" => @account_data.date,
+				"comment" => @account_data.comment,
+				"place" => @account_data.place
+			}
+			@access_token.post("#{API_URL}home/money/payment", account_data)
+		end
 		redirect_to account_books_path
 	end
 
@@ -55,6 +60,10 @@ class AccountBooksController < ApplicationController
 		categories_format_json = HTTPClient.get("#{API_URL}category").body
 		categories_convert_array = JSON.parse(categories_format_json)["categories"]
 		@categories_convert_hash = Hash[*(categories_convert_array.map{|category|category.values[0,2]}.flatten)]
+	end
+
+	def account_data_params
+		params.require(:account_data).permit(:category_id, :genre_id,:amount,:date, :comment, :name, :place)
 	end
 
 end
