@@ -18,10 +18,10 @@ RSpec.describe "AccountBooks", type: :request do
         headers: { 'Content-Type'=> 'application/json' })
     end
 
-      it "responds successfully" do
-				get account_books_path
-        expect(response).to have_http_status(200)
-      end
+    it "responds successfully" do
+      get account_books_path
+      expect(response).to have_http_status(200)
+    end
 
   end
 
