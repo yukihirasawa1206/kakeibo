@@ -17,97 +17,97 @@
 @import "toastr";
 
 html {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	background-color: #fafafa;
-	font-size: 14px;
-	color: #262626;
-	height: 100%;
+  background-color: #fafafa;
+  font-size: 14px;
+  color: #262626;
+  height: 100%;
 }
 
 header {
-	background-color: #ffffff;
-	.navbar-brand {
-		font-size: 2rem;
-		font-weight: bold;
-		color: gray;
-		.fas {
-			color: #28a745;
-		}
-	}
-	.form-inline {
-		margin-left: -85px;
-	}
+  background-color: #ffffff;
+  .navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    color: gray;
+    .fas {
+      color: #28a745;
+    }
+  }
+  .form-inline {
+    margin-left: -85px;
+  }
 }
 
 .top-page-wrapper {
-	height: 80%;
-	.signup-table {
-		padding-top: 1rem;
-		background-color: #ffffff;
-		border-radius: 0.25rem;
-		border: 1px solid rgba(0,0,0,0.125);
-		.signup-btn{
-			margin-bottom: 1rem;
-		}
-		.zaim-link {
-			color: #28a745;
-		}
-	}
+  height: 80%;
+  .signup-table {
+    padding-top: 1rem;
+    background-color: #ffffff;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(0,0,0,0.125);
+    .signup-btn{
+      margin-bottom: 1rem;
+    }
+    .zaim-link {
+      color: #28a745;
+    }
+  }
 }
 
 .landing-left {
-	margin-top: 20px;
-	.account-form{
-		background-color: #ffffff;
-		.form-group {
-			margin: 15px;
-		}
-		.form-actions {
-			margin: 15px;
-		}
-	}
+  margin-top: 20px;
+  .account-form{
+    background-color: #ffffff;
+    .form-group {
+      margin: 15px;
+    }
+    .form-actions {
+      margin: 15px;
+    }
+  }
 }
 
 .landing-right {
-	margin-top: 20px;
-	margin-bottom: 15px;
-	ul{
-		background-color: #ffffff;
-		.user-content{
-			margin-bottom: 13px;
-			.user-info {
-				img {
-					margin-top: 6px;
-					border-radius: 100%;
-				}
-			}
-			.user-record{
-				p.record-number {
-					font-size: 4rem;
-					color: #28a745;
-					margin-bottom: 0;
-				}
-			}
-		}
-		.sum-payment p{
-			font-size: 3rem;
-			color: #343a40;
-		}
-	}
-	.month-changer{
-		margin-top: 10px;
-	}
-	.account-record-list {
-		margin-top: 10px;
-		.payment-record-name {
-			font-size: 11px;
-		}
-		.payment-record-place {
-			font-size: 11px;
-		}
-	}
+  margin-top: 20px;
+  margin-bottom: 15px;
+  ul{
+    background-color: #ffffff;
+    .user-content{
+      margin-bottom: 13px;
+      .user-info {
+        img {
+          margin-top: 6px;
+          border-radius: 100%;
+        }
+      }
+      .user-record{
+        p.record-number {
+          font-size: 4rem;
+          color: #28a745;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .sum-payment p{
+      font-size: 3rem;
+      color: #343a40;
+    }
+  }
+  .month-changer{
+    margin-top: 10px;
+  }
+  .account-record-list {
+    margin-top: 10px;
+    .payment-record-name {
+      font-size: 11px;
+    }
+    .payment-record-place {
+      font-size: 11px;
+    }
+  }
 }
 

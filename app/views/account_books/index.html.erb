@@ -1,70 +1,70 @@
 <div class="row">
-	<div class= "landing-left col-sm-3">
-		<%= render 'account_form'%>
-	</div>
-	<div class="landing-right col-sm-9">
-		<div class="user-table">
-			<ul class="list-group">
-				<li class="list-group-item">
-					<div class="user-content row">
-						<div class="user-info col-sm-2 text-center">
-								<%= image_tag @user["profile_image_url"] %>
-								<b><%= @user["name"] %></b>
-						</div>
-						<div class="user-record col-sm-10 row">
-							<div class="record-content col-sm-4 text-center">
-								<p class="record-number"><%= @user["input_count"] %></p>
-								<b class="record-title">Input count </b>
-							</div>
-							<div class="record-content col-sm-4 text-center">
-								<p class="record-number"><%= @user["day_count"] %></p>
-								<b class="record-title">Day count </b>
-							</div>
-							<div class="record-content col-sm-4 text-center">
-								<p class="record-number"><%= @user["repeat_count"] %></p>
-								<b class="record-title">Repeat count </b>
-							</div>
-						</div>
-					</div>
-					<hr>
-					<div class="sum-payment col-sm-12 text-center">
-						<b>Payment of this month</b>
-						<p><%= sum_month_payment(@payment_records) %></p>
-				</div>
-				</li>
-			</ul>
-		</div>
-		<div>
-			<%= render 'month_changer' %>
-			<ul class="account-record-list list-group">
-				<% @payment_records.each_with_index do |payment_record, index| %>
-					<li class="list-group-item payment-record-list" id="payment-record-<%= index + 1%>">
-					<div class="row">
-						<div class="payment-record-date col-sm-2 text-center px-0">
-							<%= payment_record["date"] %>
-						</div>
-						<div class="payment-record-category col-sm-2 text-center pl-0">
-							<%= ApplicationHelper::CATEGORY_LIST[payment_record["category_id"].to_s] %>
-						</div>
-						<div class="payment-record-name col-sm-3 text-center">
-							<%= payment_record["name"] %>
-						</div>
-						<div class="payment-record-amount col-sm-1 text-right">
-							&yen;<%= payment_record["amount"] %>
-						</div>
-						<div class="payment-record-place col-sm-3 text-right pr-0">
-							<%= payment_record["place"] %>
-						</div>
-						<div class="payment-record-destroy col-sm-1 text-right">
-							<%= link_to account_book_path(payment_record["id"]), method: :delete do %>
-								<i class="fas fa-trash-alt text-secondary"></i>
-							<% end %>
-						</div>
-					</div>
-				</li>
-				<% end %>
-			</ul>
-		</div>
-		<%= render 'month_changer' %>
-	</div>
+  <div class= "landing-left col-sm-3">
+    <%= render 'account_form'%>
+  </div>
+  <div class="landing-right col-sm-9">
+    <div class="user-table">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="user-content row">
+            <div class="user-info col-sm-2 text-center">
+                <%= image_tag @user["profile_image_url"] %>
+                <b><%= @user["name"] %></b>
+            </div>
+            <div class="user-record col-sm-10 row">
+              <div class="record-content col-sm-4 text-center">
+                <p class="record-number"><%= @user["input_count"] %></p>
+                <b class="record-title">Input count </b>
+              </div>
+              <div class="record-content col-sm-4 text-center">
+                <p class="record-number"><%= @user["day_count"] %></p>
+                <b class="record-title">Day count </b>
+              </div>
+              <div class="record-content col-sm-4 text-center">
+                <p class="record-number"><%= @user["repeat_count"] %></p>
+                <b class="record-title">Repeat count </b>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="sum-payment col-sm-12 text-center">
+            <b>Payment of this month</b>
+            <p><%= sum_month_payment(@payment_records) %></p>
+        </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <%= render 'month_changer' %>
+      <ul class="account-record-list list-group">
+        <% @payment_records.each_with_index do |payment_record, index| %>
+          <li class="list-group-item payment-record-list" id="payment-record-<%= index + 1%>">
+          <div class="row">
+            <div class="payment-record-date col-sm-2 text-center px-0">
+              <%= payment_record["date"] %>
+            </div>
+            <div class="payment-record-category col-sm-2 text-center pl-0">
+              <%= ApplicationHelper::CATEGORY_LIST[payment_record["category_id"].to_s] %>
+            </div>
+            <div class="payment-record-name col-sm-3 text-center">
+              <%= payment_record["name"] %>
+            </div>
+            <div class="payment-record-amount col-sm-1 text-right">
+              &yen;<%= payment_record["amount"] %>
+            </div>
+            <div class="payment-record-place col-sm-3 text-right pr-0">
+              <%= payment_record["place"] %>
+            </div>
+            <div class="payment-record-destroy col-sm-1 text-right">
+              <%= link_to account_book_path(payment_record["id"]), method: :delete do %>
+                <i class="fas fa-trash-alt text-secondary"></i>
+              <% end %>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <%= render 'month_changer' %>
+  </div>
 </div>
