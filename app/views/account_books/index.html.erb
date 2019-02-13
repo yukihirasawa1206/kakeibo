@@ -44,7 +44,7 @@
 							<%= payment_record["date"] %>
 						</div>
 						<div class="payment-record-category col-sm-2 text-center pl-0">
-							<%= @categories_convert_hash[payment_record["category_id"].to_i] %>
+							<%= ApplicationHelper::CATEGORY_LIST[payment_record["category_id"].to_s] %>
 						</div>
 						<div class="payment-record-name col-sm-3 text-center">
 							<%= payment_record["name"] %>

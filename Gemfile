@@ -26,6 +26,7 @@ group :development, :test do
 	gem 'rspec-rails', '~> 3.6.0'
 	gem 'rspec-core'
 	gem 'rspec_junit_formatter'
+  gem 'webmock'
 	gem 'dotenv-rails'
 end
 

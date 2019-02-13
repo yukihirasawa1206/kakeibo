@@ -9,7 +9,6 @@ class AccountBooksController < ApplicationController
 		user_json = @access_token.get("#{API_URL}home/user/verify")
 		@user = JSON.parse(user_json.body)["me"]
 		@account_data = AccountData.new
-		category_list
 	end
 
 	def create
@@ -60,19 +59,19 @@ class AccountBooksController < ApplicationController
 		@access_token = OAuth::AccessToken.new(@consumer, session[:access_token], session[:access_secret])
 	end
 
-	def category_list
-		if session[:categories]
-			@categories_convert_hash = session[:categories]
-		else
-			categories_format_json = HTTPClient.get("#{API_URL}category").body
-			categories_convert_array = JSON.parse(categories_format_json)["categories"]
-			@categories_convert_hash = Hash[*(categories_convert_array.map{|category|category.values[0,2]}.flatten)]
-			session[:categories] = @categories_convert_hash
-		end
-	end
-
 	def account_data_params
 		params.require(:account_data).permit(:category_id, :genre_id,:amount,:date, :comment, :name, :place)
 	end
+
+	# def category_list
+	# 	if session[:categories]
+	# 		@categories_convert_hash = session[:categories]
+	# 	else
+	# 		categories_format_json = HTTPClient.get("#{API_URL}category")
+	# 		categories_convert_array = JSON.parse(categories_format_json.body)["categories"]
+	# 		@categories_convert_hash = Hash[*(categories_convert_array.map{|category|category.values[0,2]}.flatten)]
+	# 		session[:categories] = @categories_convert_hash
+	# 	end
+	# end
 
 end
