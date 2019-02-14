@@ -24,7 +24,7 @@ module ApplicationHelper
     "199"=>"Other"}
 
   def signin_user?
-    if session[:request_token] && session[:request_secret]
+    if session[:access_token] && session[:access_secret]
       true
     end
   end
