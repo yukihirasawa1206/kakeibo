@@ -14,31 +14,26 @@ class AccountBooksController < ApplicationController
   def create
     @account_data = AccountData.new(account_data_params)
     if @account_data.valid?
-      account_data = {
-        "mapping"     => 1,
-        "category_id" => @account_data.category_id,
-        "genre_id"    => @account_data.genre_id,
-        "name"        => @account_data.name,
-        "amount"      => @account_data.amount,
-        "date"        => @account_data.date,
-        "comment"     => @account_data.comment,
-        "place"       => @account_data.place
-      }
+      account_data = convert_to_post_data(@account_data)
       @access_token.post("#{API_URL}home/money/payment", account_data)
-      flash[:success] = "Create account record successfully."
+      response_message(@access_token)
     else
-      flash[:alert] = "The input value is incorrect"
+      flash[:alert] = "Input value is incorrect."
     end
-      redirect_to account_books_path
+		redirect_to account_books_path
   end
 
   def destroy
     @access_token.delete("#{API_URL}home/money/payment/#{params["id"]}")
+    response_message(@access_token)
     redirect_to account_books_path
-    flash[:success] = "Delete account record is successful."
   end
 
   private
+
+  def account_data_params
+    params.require(:account_data).permit(:category_id, :genre_id,:amount,:date, :comment, :name, :place)
+  end
 
   def authenticated_user
     return if session[:request_token] && session[:request_secret]
@@ -60,8 +55,25 @@ class AccountBooksController < ApplicationController
     @access_token = OAuth::AccessToken.new(@consumer, session[:access_token], session[:access_secret])
   end
 
-  def account_data_params
-    params.require(:account_data).permit(:category_id, :genre_id,:amount,:date, :comment, :name, :place)
+  def convert_to_post_data(data)
+      post_data = {
+        "mapping"     => 1,
+        "category_id" => data.category_id,
+        "genre_id"    => data.genre_id,
+        "name"        => data.name,
+        "amount"      => data.amount,
+        "date"        => data.date,
+        "comment"     => data.comment,
+        "place"       => data.place
+      }
+  end
+
+  def response_message(access_token)
+    if @access_token.response.class == Net::HTTPOK
+      flash[:success] = "#{self.action_name} account record is successful."
+    else
+      flash[:alert] = @access_token.response
+    end
   end
 
 end
