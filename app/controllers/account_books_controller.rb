@@ -25,16 +25,17 @@ class AccountBooksController < ApplicationController
         "place"       => @account_data.place
       }
       @access_token.post("#{API_URL}home/money/payment", account_data)
+      flash[:success] = "Create account record successfully."
     else
-      flash[:alert] = "Something went wrong."
+      flash[:alert] = "The input value is incorrect"
     end
-    redirect_to account_books_path
+      redirect_to account_books_path
   end
 
   def destroy
     @access_token.delete("#{API_URL}home/money/payment/#{params["id"]}")
     redirect_to account_books_path
-    flash[:alert] = "Delete account record is successful."
+    flash[:success] = "Delete account record is successful."
   end
 
   private
