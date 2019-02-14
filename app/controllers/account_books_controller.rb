@@ -69,10 +69,10 @@ class AccountBooksController < ApplicationController
   end
 
   def response_message(access_token)
-    if @access_token.response.class == Net::HTTPOK
+    if access_token.response.class == Net::HTTPOK
       flash[:success] = "#{self.action_name} account record is successful."
     else
-      flash[:alert] = @access_token.response
+      flash[:alert] = access_token.response
     end
   end
 
