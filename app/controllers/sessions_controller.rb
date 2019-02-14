@@ -8,13 +8,6 @@ class SessionsController < ApplicationController
     redirect_to @request_token.authorize_url(oauth_callback: CALLBACK_URL)
   end
 
-  def signout
-    session[:request_token] = nil
-    session[:request_secret] = nil
-    redirect_to root_path
-    flash[:notice] = "Sign out is successfull."
-  end
-
   def callback
     if session[:request_token] && params[:oauth_verifier]
       @oauth_verifier = params[:oauth_verifier]
@@ -29,6 +22,14 @@ class SessionsController < ApplicationController
       flash[:alert] = "Something went wrong ..."
     end
   end
+
+  def signout
+    session[:access_token] = nil
+    session[:access_secret] = nil
+    redirect_to root_path
+    flash[:notice] = "Sign out is successfull."
+  end
+
 
   private
 

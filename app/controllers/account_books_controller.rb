@@ -36,7 +36,7 @@ class AccountBooksController < ApplicationController
   end
 
   def authenticated_user
-    return if session[:request_token] && session[:request_secret]
+    return if session[:access_token] && session[:access_secret]
     redirect_to root_path
     flash[:alert] = "Sign in is required."
   end
